@@ -1,11 +1,23 @@
-apiVersion: v1
-kind: Pod
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
- name: hello-po
- namespace: default
+  name: guestbook
+  annotations:
+    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: argocd-notification
+    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: argocd-notification
+    notifications.argoproj.io/subscribe.on-sync-failed.slack: argocd-notification
+    notifications.argoproj.io/subscribe.on-sync-running.slack: argocd-notification
+    notifications.argoproj.io/subscribe.on-sync-status-unknown.slack: argocd-notification
+    notifications.argoproj.io/subscribe.on-deployed.slack: argocd-notification
+    notifications.argoproj.io/subscribe.on-health-degraded.slack: argocd-notification
 spec:
- containers:
-   - name: hello-co
-     image: nginxdemos/hello
-     ports:
-       - containerPort: 80
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: guestbook
+    repoURL: https://github.com/argoproj/argocd-example-apps.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
