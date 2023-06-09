@@ -47,5 +47,4 @@ spec:
   destination:
     namespace: default
     server: https://kubernetes.default.svc
-  syncPolicy:
-    automated: {}
+  project: argo-cd-deploy
