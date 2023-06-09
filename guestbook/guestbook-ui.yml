@@ -34,21 +34,3 @@ spec:
         name: guestbook-ui
         ports:
         - containerPort: 80
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: guestbook-ui
-  annotations:
-    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: argocd-notification
-    notifications.argoproj.io/suabscribe.on-sync-failed.slack: argocd-notification
-    notifications.argoproj.io/subscribe.on-sync-running.slack: argocd-notification
-    notifications.argoproj.io/subscribe.on-sync-status-unknown.slack: argocd-notification
-    notifications.argoproj.io/subscribe.on-deployed.slack: argocd-notification
-    notifications.argoproj.io/subscribe.on-health-degraded.slack: argocd-notification
-spec:
-  destination:
-    namespace: argocd
-    server: https://kubernetes.default.svc
-  project: argo-cd-deploy
