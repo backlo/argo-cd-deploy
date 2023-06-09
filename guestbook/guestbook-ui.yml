@@ -7,8 +7,8 @@ spec:
   - name: http
     protocol: TCP
     nodePort: 32393
-    port: 80
-    targetPort: 80
+    port: 32393
+    targetPort: 8080
   selector:
     app: guestbook-ui
   type: NodePort
@@ -33,7 +33,7 @@ spec:
       - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
         name: guestbook-ui
         ports:
-        - containerPort: 80
+        - containerPort: 8080
 
 ---
 apiVersion: argoproj.io/v1alpha1
