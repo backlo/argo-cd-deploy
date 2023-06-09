@@ -49,6 +49,6 @@ metadata:
     notifications.argoproj.io/subscribe.on-health-degraded.slack: argocd-notification
 spec:
   destination:
-    namespace: default
+    namespace: argocd
     server: https://kubernetes.default.svc
   project: argo-cd-deploy
