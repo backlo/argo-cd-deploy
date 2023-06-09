@@ -7,8 +7,8 @@ spec:
   - name: http
     protocol: TCP
     nodePort: 32393
-    port: 32393
-    targetPort: 8080
+    port: 80
+    targetPort: 32393
   selector:
     app: guestbook-ui
   type: NodePort
