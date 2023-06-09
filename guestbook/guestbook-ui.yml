@@ -35,6 +35,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  name: guestbook
   annotations:
     notifications.argoproj.io/subscribe.on-sync-succeeded.slack: argocd-notification
     notifications.argoproj.io/subscribe.on-sync-failed.slack: argocd-notification
